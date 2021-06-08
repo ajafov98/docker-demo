@@ -23,9 +23,9 @@ node {
      }                                   
      mysql.stop()
    }                                     
-   stage('docker build/push') {            
-     docker.withRegistry('http://localhost5000') {
+    stage('docker build/push') {
+     docker.withRegistry('http://localhost:5000') { // You can add credentials with another string in this function
        def app = docker.build("localhost:5000/docker-nodejs-demo:${commit_id}", '.').push()
-     }                                     
+     }                                    
    }                                       
 }                                          
